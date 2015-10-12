@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.2'
+ruby '2.2.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -13,7 +13,9 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
+# V8 JavaScript engine in binary and source forms in order to support fast builds of The Ruby Racer
+gem 'libv8', '~> 3.16.14.11'
 # Use the Sass form of Bootstrap
 gem 'bootstrap-sass', '~> 3.3.4'
 

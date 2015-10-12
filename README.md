@@ -1,44 +1,49 @@
 newrelic-ruby-kata
 ==================
 
-Using New Relic and Heroku, see how many things you can find and fix to make this app perform fast!
+Using New Relic and Docker, see how many things you can find and fix to make this app perform fast!
 
-Step 1
--------
+Get the Code
+------------
 Get the code. The code is waiting to be forked on [Github](https://github.com/newrelic/newrelic-ruby-kata)
 
-Step 2
--------
-Load the sample DB locally:
+Configure your account
+----------------------
 
-    bundle exec rake db:create
-    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d newrelic-ruby-kata_development public/sample-data.dump
-    bundle exec rails s
+In the config directory, copy the newrelic.env.sample to newrelic.env and edit it to set your license key and optionally a name for the application.
 
-Step 3
--------
-Deploy your app to Heroku, and load the database:
+Build the Docker images
+-----------------------
 
-First,
+Build your application:
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+    cd newrelic-ruby-kata
+    docker-compose build 
+    docker-compose run web rake db:create
 
-Then, you can load the sample data via:
+FIXME restore the app data (this is surely not the best way):
 
-    heroku addons:create heroku-postgresql:hobby-dev
-    heroku addons:create memcachier
-    heroku config:set NEW_RELIC_APP_NAME=<NAME>
-    heroku pg:credentials DATABASE_URL
-    pg_restore --verbose --clean --no-acl --no-owner -h <HOSTNAME> -U <USER> -d <DATABASE> -p <PORT> --password public/sample-data.dump
+    docker exec -it `docker ps |grep newrelicrubykata_db_1 | cut -f1 -d' '` bash
+    pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d newrelic-ruby-kata_development /myapp/public/sample-data.dump
 
-Step 4
--------
-You can watch a [video on getting started](http://newrelic.com/resources/training) with the New Relic agent to help get you started. The New Relic agent will help you find and solve the performance issues in this application as well as help you see the complete impact of your changes.
+You can check your containers and log in to them using the following:
 
-Step 5
--------
+    docker exec -it `docker ps |grep newrelicrubykata_db_1 | cut -f1 -d' '` bash
+    docker exec -it `docker ps |grep newrelicrubykata_web_1 | cut -f1 -d' '` bash
+
+Start your site:
+
+    docker-compose up
+
+Next Steps
+----------
+
 Fix the code / Solve as many of the Katas as you can. There are seven distinct Katas in this application that can be torn apart and fixed by using your awesome dev abilities and the deep metrics that New Relic provides.
 
-Step 6
+Learn more
+----------
+You can watch a [video on getting started](http://newrelic.com/resources/training) with the New Relic agent to help get you started. The New Relic agent will help you find and solve the performance issues in this application as well as help you see the complete impact of your changes.
+
+Feedback
 -------
 Let us know how you did, what you liked or disliked, what helped you find problems or what were the challenges, what you like about New Relic and what you don't - we just want to hear from you and see what we can do to get better. We'll even send you something for demonstrating your geek super powers when you complete the Kata - just provide us with your [thoughts and a link to your forked repo](https://support.newrelic.com/home).
