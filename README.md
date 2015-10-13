@@ -5,7 +5,8 @@ Using New Relic and Docker, see how many things you can find and fix to make thi
 
 Get the Code
 ------------
-Get the code. The code is waiting to be forked on [Github](https://github.com/newrelic/newrelic-ruby-kata)
+
+Get the code. The code is waiting to be forked on [Github](https://github.com/savs/newrelic-ruby-kata/tree/docker-support) or you can [grab the zip](https://github.com/savs/newrelic-ruby-kata/archive/docker-support.zip).
 
 Configure your account
 ----------------------

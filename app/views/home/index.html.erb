@@ -20,12 +20,16 @@ pg_restore --verbose --clean --no-acl --no-owner -h localhost -U $USER -d newrel
    	</div>
     <div class="col-md-4">
       <h2>Step 3</h2>
-      <p>Deploy your app to Heroku, and load the database:
-      <p>Look for the purple 'Deploy to Heroku' button on your Github fork's README.</p>
-      <p>Then, you can load the sample data from the root directory of your local application via:</p>
-      <pre>heroku pg:credentials DATABASE_URL</pre>
-      <p>This will give you the hostname, username, database name, port and password which you can enter into the following command in order to upload the sample-data.dump to your heroku database.</p>
-      <pre>pg_restore --verbose --clean --no-acl --no-owner -h &#60;HOSTNAME&#62; -U &#60;USER&#62; -d &#60;DATABASE&#62; -p &#60;PORT&#62; --password public/sample-data.dump</pre>
+      <p>Hammer your site</p>
+      <ul>
+        <li><%= link_to "The Loop", loop_path %></li>
+        <li><%= link_to "The Big List", big_list_path %></li>
+        <li><%= link_to "The Tweets", tweets_path %></li>
+        <li><%= link_to "The Cache", caching_path %></li>
+        <li><%= link_to "The Async", async_path %></li>
+        <li><%= link_to "The Many Assets", many_assets_path %></li>
+        <li><%= link_to "The Error", errors_path %></li>
+      </ul>
     </div>
   </div>
   <div class="row">
